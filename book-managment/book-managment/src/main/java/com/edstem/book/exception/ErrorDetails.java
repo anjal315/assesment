@@ -1,4 +1,4 @@
-package com.bookmanagment.assessment.bookmanagment.exception;
+package com.edstem.book.exception;
 
 import java.time.LocalDate;
 

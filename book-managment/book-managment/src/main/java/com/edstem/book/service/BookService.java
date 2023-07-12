@@ -1,6 +1,6 @@
-package com.bookmanagment.assessment.bookmanagment.book;
+package com.edstem.book.service;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.edstem.book.model.Book;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -14,7 +14,7 @@ public class BookService {
 
     private static Integer booksCount = 0;
 
-    static  {
+    static {
         books.add(new Book(booksCount++, "Harry Potter Part One", "Aishu", 100001, LocalDate.now().minusYears(25)));
         books.add(new Book(booksCount++, "Harry Potter Part Two", "Raju", 100001, LocalDate.now().minusYears(20)));
         books.add(new Book(booksCount++, "Harry Potter Part Three", "Rakeshu", 100001, LocalDate.now().minusYears(15)));
@@ -27,15 +27,18 @@ public class BookService {
     public List<Book> findAll() {
         return books;
     }
-    public Book save(Book book){
+
+    public Book save(Book book) {
         book.setId(booksCount++);
         books.add(book);
         return book;
     }
+
     public Book findOne(int id) {
         Predicate<? super Book> predicate = book -> book.getId().equals(id);
         return books.stream().filter(predicate).findFirst().get();
     }
+
     public void deleteById(int id) {
         Predicate<? super Book> predicate = book -> book.getId().equals(id);
         books.removeIf(predicate);

@@ -1,13 +1,13 @@
-package com.bookmanagment.assessment.bookmanagment;
+package com.edstem.book;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BookManagmentApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BookManagmentApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

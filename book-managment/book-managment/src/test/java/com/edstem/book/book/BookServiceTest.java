@@ -1,10 +1,8 @@
-package com.bookmanagment.assessment.bookmanagment.book;
+package com.edstem.book.book;
 
+import com.edstem.book.service.BookService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class BookServiceTest {
     @Test

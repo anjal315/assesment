@@ -1,4 +1,4 @@
-package com.bookmanagment.assessment.bookmanagment;
+package com.edstem.book;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.bookmanagment.assessment.bookmanagment.book;
+package com.edstem.book.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
