@@ -1,20 +1,18 @@
 package com.edstem.book.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-@Entity(name = "book_details")
+@Entity
+@Table(name = "book_details")
 public class Book {
 
     protected Book() {
 
     }
-
     //  id, title, author, isbn, publicationDate.
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy =  GenerationType.TABLE)
     private Integer id;
     private String title;
     private String author;
