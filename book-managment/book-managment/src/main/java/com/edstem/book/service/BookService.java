@@ -1,12 +1,15 @@
 package com.edstem.book.service;
 
 import com.edstem.book.model.Book;
+import com.edstem.book.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-@RestController
+@Service
 public class BookService {
     private static List<Book> books = new ArrayList<>();
 
