@@ -1,12 +1,14 @@
 package com.edstem.book.contract;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDate;
 @Builder
 @Getter
-public class BookResponse {
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BookDto {
     private int id;
     private String title;
     private String author;

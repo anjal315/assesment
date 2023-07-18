@@ -8,18 +8,18 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class BookSecurity {
-        @Bean
-        SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-            http.authorizeHttpRequests(
-                    auth ->auth.anyRequest().authenticated()
-            );
-            http.httpBasic(Customizer.withDefaults());
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(
+                auth -> auth.anyRequest().authenticated()
+        );
+        http.httpBasic(Customizer.withDefaults());
 
-            http.csrf().disable();
-            http.headers().frameOptions().disable();
-            return http.build();
-        }
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+        return http.build();
     }
+}
 
 
 

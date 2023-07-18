@@ -1,81 +1,41 @@
 package com.edstem.book.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
 import java.time.LocalDate;
+
 @Entity
 @Table(name = "book_details")
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
-
-    protected Book() {
-
-    }
     //  id, title, author, isbn, publicationDate.
     @Id
-    @GeneratedValue(strategy =  GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer id;
+
+    @NotBlank(message = "Title is required")
+    @Size(max = 255, message = "Title cannot exceed 255 characters")
     private String title;
+
+
+    @NotBlank(message = "Author is required")
+    @Size(max = 100, message = "Author name cannot exceed 100 characters")
     private String author;
+
+    @NotNull(message = "ISBN is required")
     private long isbn;
+
+    @NotNull(message = "Publication date is required")
+    @PastOrPresent(message = "Publication date must be in the past or present")
     private LocalDate publicationDate;
 
-    public Book(Integer id, String title, String author, long isbn, LocalDate publicationDate) {
-        super();
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
-        this.publicationDate = publicationDate;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public long getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(long isbn) {
-        this.isbn = isbn;
-    }
-
-    public LocalDate getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", isbn=" + isbn +
-                ", publicationDate=" + publicationDate +
-                '}';
-    }
 }
