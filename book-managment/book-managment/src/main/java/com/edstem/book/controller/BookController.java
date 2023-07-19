@@ -36,7 +36,7 @@ public class BookController {
         return new ResponseEntity<>(savedBook, HttpStatus.CREATED);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<BookDto> updateBookById(@PathVariable int id, @Valid @RequestBody BookDto book) {
         BookDto updatedBook = bookService.updateBookById(id, book);
         return new ResponseEntity<>(updatedBook, HttpStatus.OK);
