@@ -10,9 +10,13 @@
         <module name="book-managment" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="book-management" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="book-management" options="-parameters" />
       <module name="book-managment" options="-parameters" />
     </option>
   </component>
