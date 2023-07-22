@@ -10,5 +10,4 @@ public class AuthorValidator implements ConstraintValidator<ValidAuthor, String>
     public boolean isValid(String author, ConstraintValidatorContext constraintValidatorContext) {
         return StringUtils.hasText(author) && author.split(" ").length >= 2;
     }
-
 }

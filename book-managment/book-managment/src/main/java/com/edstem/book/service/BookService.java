@@ -4,12 +4,11 @@ import com.edstem.book.contract.BookDto;
 import com.edstem.book.exception.BookNotFoundException;
 import com.edstem.book.model.Book;
 import com.edstem.book.repository.BookRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -25,14 +24,20 @@ public class BookService {
 
     public List<BookDto> getAllBooks() {
         List<Book> books = this.bookRepository.findAll();
-        return books.stream().map(book -> modelMapper.map(book, BookDto.class)).collect(Collectors.toList());
+        return books.stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
     }
 
     public BookDto getBookById(int id) {
-        Book book = this.bookRepository.findById(id).orElseThrow(() -> {
-            log.error("Book with id: {} not found", id);
-            return new BookNotFoundException(id);
-        });
+        Book book =
+                this.bookRepository
+                        .findById(id)
+                        .orElseThrow(
+                                () -> {
+                                    log.error("Book with id: {} not found", id);
+                                    return new BookNotFoundException(id);
+                                });
         return modelMapper.map(book, BookDto.class);
     }
 
@@ -43,10 +48,14 @@ public class BookService {
     }
 
     public BookDto updateBookById(int id, BookDto book) {
-        Book existingBook = bookRepository.findById(id).orElseThrow(() -> {
-            log.error("Book with id: {} not found", id);
-            return new BookNotFoundException(id);
-        });
+        Book existingBook =
+                bookRepository
+                        .findById(id)
+                        .orElseThrow(
+                                () -> {
+                                    log.error("Book with id: {} not found", id);
+                                    return new BookNotFoundException(id);
+                                });
         modelMapper.map(book, existingBook);
         Book updatedBook = bookRepository.save(existingBook);
         return modelMapper.map(updatedBook, BookDto.class);
@@ -58,5 +67,4 @@ public class BookService {
         }
         bookRepository.deleteById(id);
     }
-
 }

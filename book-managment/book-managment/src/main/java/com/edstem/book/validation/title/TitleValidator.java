@@ -10,5 +10,4 @@ public class TitleValidator implements ConstraintValidator<ValidTitle, String> {
     public boolean isValid(String title, ConstraintValidatorContext constraintValidatorContext) {
         return StringUtils.hasText(title) && title.length() >= 2;
     }
-
 }

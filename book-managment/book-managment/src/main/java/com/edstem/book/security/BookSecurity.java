@@ -10,9 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class BookSecurity {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(
-                auth -> auth.anyRequest().authenticated()
-        );
+        http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
         http.httpBasic(Customizer.withDefaults());
 
         http.csrf().disable();
@@ -20,6 +18,3 @@ public class BookSecurity {
         return http.build();
     }
 }
-
-
-

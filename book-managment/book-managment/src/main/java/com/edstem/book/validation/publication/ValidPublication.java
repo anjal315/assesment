@@ -6,8 +6,7 @@ import java.lang.annotation.*;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PublicationValidator.class
-)
+@Constraint(validatedBy = PublicationValidator.class)
 @Documented
 public @interface ValidPublication {
 
@@ -16,5 +15,4 @@ public @interface ValidPublication {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
 }

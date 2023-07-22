@@ -2,12 +2,11 @@ package com.edstem.book.validation.isbn;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-
 import java.lang.annotation.*;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy= IsbnValidator.class)
+@Constraint(validatedBy = IsbnValidator.class)
 @Documented
 public @interface ValidIsbn {
 
@@ -16,5 +15,4 @@ public @interface ValidIsbn {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
 }

@@ -4,9 +4,9 @@ import com.edstem.book.validation.author.ValidAuthor;
 import com.edstem.book.validation.isbn.ValidIsbn;
 import com.edstem.book.validation.publication.ValidPublication;
 import com.edstem.book.validation.title.ValidTitle;
+import java.time.LocalDate;
 import lombok.*;
 
-import java.time.LocalDate;
 @Builder
 @Getter
 @Setter
@@ -15,15 +15,11 @@ import java.time.LocalDate;
 public class BookDto {
     private int id;
 
-    @ValidTitle
-    private String title;
+    @ValidTitle private String title;
 
-    @ValidAuthor
-    private String author;
+    @ValidAuthor private String author;
 
-    @ValidIsbn
-    private long isbn;
+    @ValidIsbn private long isbn;
 
-    @ValidPublication
-    private LocalDate publicationDate;
+    @ValidPublication private LocalDate publicationDate;
 }
