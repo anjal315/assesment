@@ -4,10 +4,13 @@ import com.edstem.book.contract.BookDto;
 import com.edstem.book.exception.BookNotFoundException;
 import com.edstem.book.model.Book;
 import com.edstem.book.repository.BookRepository;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -67,4 +70,19 @@ public class BookService {
         }
         bookRepository.deleteById(id);
     }
+
+    public List<BookDto> getAllPublishedBooks() {
+        List<Book> books = this.bookRepository.findAll();
+        LocalDate today = LocalDate.now();
+        for (Book book : books) {
+            LocalDate publicationDate = book.getPublicationDate();
+            if (publicationDate != null && publicationDate.isAfter(today)) {
+                book.setPublicationDate(today);
+            }
+        }
+        return books.stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
+    }
+
 }

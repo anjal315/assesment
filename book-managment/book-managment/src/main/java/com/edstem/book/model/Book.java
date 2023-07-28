@@ -14,10 +14,13 @@ public class Book {
     //  id, title, author, isbn, publicationDate.
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer id;
 
+    private Integer id;
     private String title;
     private String author;
     private long isbn;
     private LocalDate publicationDate;
+
+    public void setPublicationDate(LocalDate today) {
+    }
 }

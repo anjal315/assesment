@@ -1,8 +1,11 @@
 package com.edstem.book.controller;
 
 import com.edstem.book.contract.BookDto;
+import com.edstem.book.model.Book;
 import com.edstem.book.service.BookService;
 import jakarta.validation.Valid;
+
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,4 +50,10 @@ public class BookController {
         bookService.deleteBookById(id);
         return ResponseEntity.ok("Book with ID " + id + " has been deleted.");
     }
+    @GetMapping("/published-till-today")
+    public ResponseEntity<List<BookDto>> getBooksPublishedTillToday() {
+        bookService.getAllPublishedBooks();
+        return new ResponseEntity<>(bookService.getAllPublishedBooks(), HttpStatus.OK);
+    }
+
 }
